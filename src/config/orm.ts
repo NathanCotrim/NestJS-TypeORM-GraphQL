@@ -3,10 +3,11 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 const options: TypeOrmModuleOptions = {
   type: 'sqlite',
-  database: path.resolve(__dirname, '..', '..', 'data', 'sqlite.db'),
+  database: 'data/db.sqlite',
   logging: true,
   entities: [path.resolve(__dirname, '..', 'db', 'models', '*')],
   migrations: [path.resolve(__dirname, '..', 'db', 'migrations', '*')],
+  synchronize: true,
 };
 
 export { options };
