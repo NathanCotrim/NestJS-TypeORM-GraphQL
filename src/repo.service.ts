@@ -6,6 +6,7 @@ import { Message } from './db/models/message.entity';
 
 @Injectable()
 class RepoService {
+  authorRepo: any;
   public constructor(
     @InjectRepository(User) public readonly userRepo: Repository<User>,
     @InjectRepository(Message) public readonly messageRepo: Repository<Message>,
