@@ -4,7 +4,7 @@ import { UserInput } from './user.input';
 @InputType()
 class MessageUserConnectInput {
   @Field()
-  readonly id: number;
+  readonly id: string;
 }
 
 @InputType()

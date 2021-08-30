@@ -7,8 +7,9 @@ import { options } from './config/orm';
 import { RepoModule } from './repo.module';
 import { UserResolver } from './resolvers/user.resolver';
 import { GraphQLModule } from '@nestjs/graphql';
+import { MessageResolver } from './resolvers/message.resolver';
 
-const graphQLImports = [UserResolver];
+const graphQLImports = [UserResolver, MessageResolver];
 
 @Module({
   imports: [
