@@ -45,15 +45,20 @@ export class MessageResolver {
     return this.repoService.messageRepo.save(message);
   }
 
-  @Mutation(() => Message, { nullable: true })
+  @Mutation(() => Message)
   public async deleteMessage(
-    @Args('data') { id }: DeleteMessageInput,
+    @Args('data') { id, userId }: DeleteMessageInput,
   ): Promise<Message> {
     const message = await this.repoService.messageRepo.findOne(id);
 
-    if (!message) return null;
+    if (!message || message.userId !== userId)
+      throw new Error('message not exists or you not are the message author');
 
-    return this.repoService.messageRepo.remove(message);
+    const copy = { ...message };
+
+    this.repoService.messageRepo.remove(message);
+
+    return copy;
   }
 
   @ResolveField(() => User, { name: 'user' })

@@ -5,7 +5,7 @@ Nest + Typeorm + Gql - Messages Mural Backend
 - [x] The user needs register itself only using email;
 - [x] The user needs be able to post a message in mural;
 - [x] The user needs be able to authenticate by email;
-- (optional) The message can be deleted
+- [x] (optional) The message can be deleted
 - [] Generates documentation with Swagger
 - [] Integrate Dataloader
 
@@ -15,4 +15,4 @@ Nest + Typeorm + Gql - Messages Mural Backend
 - TypeORM
 
 ## Business Rules
-- [] The user cannot be able to deleted messages from another user;
+- [x] The user cannot be able to deleted messages from another user;

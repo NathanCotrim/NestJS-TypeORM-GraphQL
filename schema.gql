@@ -48,4 +48,5 @@ input MessageInput {
 
 input DeleteMessageInput {
   id: Float!
+  userId: Float!
 }

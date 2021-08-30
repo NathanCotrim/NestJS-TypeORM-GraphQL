@@ -29,4 +29,7 @@ export class MessageInput {
 export class DeleteMessageInput {
   @Field()
   readonly id: number;
+
+  @Field()
+  readonly userId: number;
 }
