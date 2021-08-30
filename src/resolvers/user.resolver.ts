@@ -4,7 +4,7 @@ import { RepoService } from 'src/repo.service';
 import { UserInput } from './input/user.input';
 
 @Resolver()
-class UserResolver {
+export class UserResolver {
   constructor(private readonly repoService: RepoService) {}
 
   @Query(() => [User])
@@ -22,4 +22,3 @@ class UserResolver {
     return this.repoService.userRepo.save(user);
   }
 }
-export { UserResolver };
