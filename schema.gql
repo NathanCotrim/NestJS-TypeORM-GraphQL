@@ -5,11 +5,10 @@
 type Message {
   id: Float!
   content: String!
-  userId: String!
+  userId: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
   user: User!
-  getUser: User!
 }
 
 """
@@ -43,14 +42,5 @@ input UserInput {
 
 input MessageInput {
   content: String!
-  user: MessageUserInput!
-}
-
-input MessageUserInput {
-  connect: MessageUserConnectInput
-  create: UserInput
-}
-
-input MessageUserConnectInput {
-  id: String!
+  userId: Float!
 }

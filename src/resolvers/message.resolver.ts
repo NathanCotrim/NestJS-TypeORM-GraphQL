@@ -3,7 +3,7 @@ import {
   Mutation,
   Parent,
   Query,
-  ResolveProperty,
+  ResolveField,
   Resolver,
 } from '@nestjs/graphql';
 import { Message } from 'src/db/models/message.entity';
@@ -37,14 +37,15 @@ export class MessageResolver {
   public async createMessage(
     @Args('data') input: MessageInput,
   ): Promise<Message> {
-    const message = this.repoService.messageRepo.create();
-    message.content = input.content;
-    message.userId = input.user.connect.id;
+    const message = this.repoService.messageRepo.create({
+      userId: input.userId,
+      content: input.content,
+    });
 
     return this.repoService.messageRepo.save(message);
   }
 
-  @ResolveProperty(() => User)
+  @ResolveField(() => User, { name: 'user' })
   public async getUser(@Parent() parent: Message): Promise<User> {
     return this.repoService.userRepo.findOne(parent.userId);
   }

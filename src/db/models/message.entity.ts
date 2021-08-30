@@ -23,7 +23,7 @@ export class Message {
 
   @Field()
   @Column({ name: 'user_id' })
-  userId: string;
+  userId: number;
 
   @Field()
   @CreateDateColumn({ name: 'created_at' })
