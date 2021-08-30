@@ -9,7 +9,7 @@ import {
 import { Message } from 'src/db/models/message.entity';
 import { User } from 'src/db/models/user.entity';
 import { RepoService } from 'src/repo.service';
-import { MessageInput } from './input/message.input';
+import { DeleteMessageInput, MessageInput } from './input/message.input';
 
 @Resolver(() => Message)
 export class MessageResolver {
@@ -43,6 +43,17 @@ export class MessageResolver {
     });
 
     return this.repoService.messageRepo.save(message);
+  }
+
+  @Mutation(() => Message, { nullable: true })
+  public async deleteMessage(
+    @Args('data') { id }: DeleteMessageInput,
+  ): Promise<Message> {
+    const message = await this.repoService.messageRepo.findOne(id);
+
+    if (!message) return null;
+
+    return this.repoService.messageRepo.remove(message);
   }
 
   @ResolveField(() => User, { name: 'user' })
