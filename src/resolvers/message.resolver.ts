@@ -19,7 +19,8 @@ export class MessageResolver {
   public async getMessages(): Promise<Message[]> {
     return this.repoService.messageRepo.find();
   }
-  @Query(() => Message, { nullable: true })
+
+  @Query(() => [Message])
   public async getMessagesFromUser(
     @Args('userId') userId: number,
   ): Promise<Message[]> {

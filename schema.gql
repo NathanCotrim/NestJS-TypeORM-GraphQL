@@ -27,14 +27,14 @@ type Query {
   getUsers: [User!]!
   user(id: Float!): User
   getMessages: [Message!]!
-  getMessagesFromUser(userId: Float!): Message
+  getMessagesFromUser(userId: Float!): [Message!]!
   getMessage(id: Float!): Message
 }
 
 type Mutation {
   createOrLoginUser(data: UserInput!): User!
   createMessage(data: MessageInput!): Message!
-  deleteMessage(data: DeleteMessageInput!): Message
+  deleteMessage(data: DeleteMessageInput!): Message!
 }
 
 input UserInput {

@@ -6,8 +6,6 @@ Nest + Typeorm + Gql - Messages Mural Backend
 - [x] The user needs be able to post a message in mural;
 - [x] The user needs be able to authenticate by email;
 - [x] (optional) The message can be deleted
-- [] Generates documentation with Swagger
-- [] Integrate Dataloader
 
 ## Non-Functional Requirements
 - Nest.js
